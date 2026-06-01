@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro — Intelligent Systems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">⚡ Neuro</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">🚀 Now in Development</div>
+                <h1>Build the future<br>with <span class="gradient-text">Neuro</span></h1>
+                <p class="hero-desc">An intelligent platform designed to push the boundaries of what's possible. Clean architecture, powerful features, beautiful by default.</p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-primary">Explore Features</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+                <div class="code-window">
+                    <div class="code-bar">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <pre class="code-block"><code><span class="keyword">const</span> neuro = <span class="keyword">new</span> <span class="class">Neuro</span>({
+  <span class="prop">intelligence</span>: <span class="string">"adaptive"</span>,
+  <span class="prop">speed</span>: <span class="string">"blazing"</span>,
+  <span class="prop">design</span>: <span class="string">"elegant"</span>
+});
+
+neuro.<span class="method">initialize</span>().<span class="method">then</span>(() => {
+  <span class="comment">// Ready to change the world ✨</span>
+  neuro.<span class="method">run</span>();
+});</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful <span class="gradient-text">Features</span></h2>
+                <p>Everything you need, nothing you don't.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-delay="0">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized from the ground up. Sub-millisecond response times that keep your users engaged.</p>
+                </div>
+                <div class="feature-card" data-delay="100">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure by Default</h3>
+                    <p>Enterprise-grade security baked into every layer. Your data stays yours, always.</p>
+                </div>
+                <div class="feature-card" data-delay="200">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Crafted with pixel-perfect attention to detail. Every interaction feels intentional.</p>
+                </div>
+                <div class="feature-card" data-delay="300">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Developer First</h3>
+                    <p>Clean APIs, comprehensive docs, and a DX that makes building a joy.</p>
+                </div>
+                <div class="feature-card" data-delay="400">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Deep insights into every metric that matters. Make decisions backed by data.</p>
+                </div>
+                <div class="feature-card" data-delay="500">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Global Scale</h3>
+                    <p>Deploy anywhere. Built for the edge with automatic scaling across regions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-text">
+                <h2>Built different, <span class="gradient-text">on purpose</span></h2>
+                <p>Neuro isn't another framework — it's a philosophy. We believe software should be fast, beautiful, and simple to understand. Every line of code is written with intention.</p>
+                <ul class="about-list">
+                    <li><span class="check">✓</span> Zero-config setup — just start building</li>
+                    <li><span class="check">✓</span> Modular architecture that grows with you</li>
+                    <li><span class="check">✓</span> First-class TypeScript support</li>
+                    <li><span class="check">✓</span> Open source and community driven</li>
+                </ul>
+            </div>
+            <div class="about-visual">
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line"><span class="prompt">$</span> npx create-neuro-app my-project</div>
+                        <div class="terminal-line output">✓ Project scaffolded in 0.3s</div>
+                        <div class="terminal-line"><span class="prompt">$</span> cd my-project && npm run dev</div>
+                        <div class="terminal-line output success">✓ Ready on http://localhost:3000</div>
+                        <div class="terminal-line cursor"><span class="prompt">$</span> <span class="blink">_</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="container stats-container">
+            <div class="stat-card">
+                <div class="stat-number" data-target="99.9">0</div>
+                <div class="stat-unit">%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="12">0</div>
+                <div class="stat-unit">ms</div>
+                <div class="stat-label">Avg Response</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-unit">K+</div>
+                <div class="stat-label">Developers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-unit">%</div>
+                <div class="stat-label">Open Source</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container contact-container">
+            <h2>Ready to get <span class="gradient-text">started</span>?</h2>
+            <p>Join the waitlist and be the first to know when Neuro launches.</p>
+            <form class="signup-form" id="signupForm">
+                <input type="email" placeholder="you@example.com" class="email-input" required>
+                <button type="submit" class="btn btn-primary">Join Waitlist</button>
+            </form>
+            <p class="form-msg" id="formMsg"></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">⚡ Neuro</a>
+                <p>Building the future, one commit at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#">Docs</a>
+            </div>
+            <div class="footer-links">
+                <h4>Community</h4>
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">License</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Neuro. Built with care.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
