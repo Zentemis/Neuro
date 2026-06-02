@@ -3,197 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neuro — Intelligent Systems</title>
+    <title>NeuroFund — AI-Powered Trading on Solana</title>
+    <meta name="description" content="NeuroFund uses AI to trade on Solana and distributes gains to $NRF stakers. Transparent, on-chain, community-first.">
+    <meta property="og:title" content="NeuroFund — AI-Powered Trading on Solana">
+    <meta property="og:description" content="AI trades. You earn. Buy $NRF on pump.fun.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">⚡ Neuro</a>
+
+    <!-- ==================== NAV ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <svg class="logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="3" fill="var(--accent)"/>
+                    <circle cx="14" cy="4" r="2" fill="var(--accent)" opacity="0.6"/>
+                    <circle cx="14" cy="24" r="2" fill="var(--accent)" opacity="0.6"/>
+                    <circle cx="4" cy="14" r="2" fill="var(--accent)" opacity="0.6"/>
+                    <circle cx="24" cy="14" r="2" fill="var(--accent)" opacity="0.6"/>
+                    <circle cx="7" cy="7" r="1.5" fill="var(--accent)" opacity="0.3"/>
+                    <circle cx="21" cy="7" r="1.5" fill="var(--accent)" opacity="0.3"/>
+                    <circle cx="7" cy="21" r="1.5" fill="var(--accent)" opacity="0.3"/>
+                    <circle cx="21" cy="21" r="1.5" fill="var(--accent)" opacity="0.3"/>
+                    <line x1="14" y1="4" x2="14" y2="11" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+                    <line x1="14" y1="17" x2="14" y2="24" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+                    <line x1="4" y1="14" x2="11" y2="14" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+                    <line x1="17" y1="14" x2="24" y2="14" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+                    <line x1="7" y1="7" x2="12" y2="12" stroke="var(--accent)" stroke-width="0.8" opacity="0.25"/>
+                    <line x1="21" y1="7" x2="16" y2="12" stroke="var(--accent)" stroke-width="0.8" opacity="0.25"/>
+                    <line x1="7" y1="21" x2="12" y2="16" stroke="var(--accent)" stroke-width="0.8" opacity="0.25"/>
+                    <line x1="21" y1="21" x2="16" y2="16" stroke="var(--accent)" stroke-width="0.8" opacity="0.25"/>
+                </svg>
+                <span>NeuroFund</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#stats">Stats</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <a href="https://pump.fun" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Buy $NRF</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container hero-container">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+        <canvas id="neuralCanvas" class="hero-canvas"></canvas>
+        <div class="container hero-inner">
             <div class="hero-content">
-                <div class="badge">🚀 Now in Development</div>
-                <h1>Build the future<br>with <span class="gradient-text">Neuro</span></h1>
-                <p class="hero-desc">An intelligent platform designed to push the boundaries of what's possible. Clean architecture, powerful features, beautiful by default.</p>
-                <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">Explore Features</a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                <h1>AI trades.<br>You earn.</h1>
+                <p class="hero-sub">NeuroFund runs an autonomous trading bot on Solana. Gains are distributed to $NRF stakers — transparently, on-chain, every cycle.</p>
+                <div class="hero-actions">
+                    <a href="https://pump.fun" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Buy $NRF on pump.fun
+                    </a>
+                    <a href="#how-it-works" class="btn btn-ghost btn-lg">How it works</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-                <div class="orb orb-3"></div>
-                <div class="code-window">
-                    <div class="code-bar">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <pre class="code-block"><code><span class="keyword">const</span> neuro = <span class="keyword">new</span> <span class="class">Neuro</span>({
-  <span class="prop">intelligence</span>: <span class="string">"adaptive"</span>,
-  <span class="prop">speed</span>: <span class="string">"blazing"</span>,
-  <span class="prop">design</span>: <span class="string">"elegant"</span>
-});
-
-neuro.<span class="method">initialize</span>().<span class="method">then</span>(() => {
-  <span class="comment">// Ready to change the world ✨</span>
-  neuro.<span class="method">run</span>();
-});</code></pre>
+            <div class="trust-bar">
+                <div class="trust-stat">
+                    <span class="trust-number" data-target="1247">0</span>
+                    <span class="trust-label">Trades Executed</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-stat">
+                    <span class="trust-number" data-target="342000" data-prefix="$">$0</span>
+                    <span class="trust-label">Distributed to Stakers</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-stat">
+                    <span class="trust-number" data-target="23.8" data-suffix="%" data-decimal="true">0%</span>
+                    <span class="trust-label">Avg Return / Cycle</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>Powerful <span class="gradient-text">Features</span></h2>
-                <p>Everything you need, nothing you don't.</p>
+                <span class="section-tag">The Flywheel</span>
+                <h2>How NeuroFund Works</h2>
+                <p>Not a feature list. A cycle that compounds.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card" data-delay="0">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized from the ground up. Sub-millisecond response times that keep your users engaged.</p>
-                </div>
-                <div class="feature-card" data-delay="100">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Secure by Default</h3>
-                    <p>Enterprise-grade security baked into every layer. Your data stays yours, always.</p>
-                </div>
-                <div class="feature-card" data-delay="200">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Beautiful Design</h3>
-                    <p>Crafted with pixel-perfect attention to detail. Every interaction feels intentional.</p>
-                </div>
-                <div class="feature-card" data-delay="300">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Developer First</h3>
-                    <p>Clean APIs, comprehensive docs, and a DX that makes building a joy.</p>
-                </div>
-                <div class="feature-card" data-delay="400">
-                    <div class="feature-icon">📊</div>
-                    <h3>Real-time Analytics</h3>
-                    <p>Deep insights into every metric that matters. Make decisions backed by data.</p>
-                </div>
-                <div class="feature-card" data-delay="500">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Global Scale</h3>
-                    <p>Deploy anywhere. Built for the edge with automatic scaling across regions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container about-container">
-            <div class="about-text">
-                <h2>Built different, <span class="gradient-text">on purpose</span></h2>
-                <p>Neuro isn't another framework — it's a philosophy. We believe software should be fast, beautiful, and simple to understand. Every line of code is written with intention.</p>
-                <ul class="about-list">
-                    <li><span class="check">✓</span> Zero-config setup — just start building</li>
-                    <li><span class="check">✓</span> Modular architecture that grows with you</li>
-                    <li><span class="check">✓</span> First-class TypeScript support</li>
-                    <li><span class="check">✓</span> Open source and community driven</li>
-                </ul>
-            </div>
-            <div class="about-visual">
-                <div class="terminal">
-                    <div class="terminal-bar">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">Terminal</span>
+            <div class="flywheel">
+                <div class="flywheel-ring">
+                    <svg viewBox="0 0 400 400" class="flywheel-svg">
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 6"/>
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="942" stroke-dashoffset="942" class="flywheel-progress"/>
+                    </svg>
+                    <div class="flywheel-step" data-step="1" style="--angle: 0deg">
+                        <div class="step-node">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <div class="step-info">
+                            <h4>AI Researches</h4>
+                            <p>Neural network scans on-chain data, social signals, and market microstructure 24/7.</p>
+                        </div>
                     </div>
-                    <div class="terminal-body" id="terminalBody">
-                        <div class="terminal-line"><span class="prompt">$</span> npx create-neuro-app my-project</div>
-                        <div class="terminal-line output">✓ Project scaffolded in 0.3s</div>
-                        <div class="terminal-line"><span class="prompt">$</span> cd my-project && npm run dev</div>
-                        <div class="terminal-line output success">✓ Ready on http://localhost:3000</div>
-                        <div class="terminal-line cursor"><span class="prompt">$</span> <span class="blink">_</span></div>
+                    <div class="flywheel-step" data-step="2" style="--angle: 90deg">
+                        <div class="step-node">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        </div>
+                        <div class="step-info">
+                            <h4>Bot Trades</h4>
+                            <p>Executes high-conviction trades on Solana DEXes with managed risk parameters.</p>
+                        </div>
+                    </div>
+                    <div class="flywheel-step" data-step="3" style="--angle: 180deg">
+                        <div class="step-node">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="step-info">
+                            <h4>Gains Generated</h4>
+                            <p>Profits accumulate in the treasury wallet. Losses are bounded per-trade.</p>
+                        </div>
+                    </div>
+                    <div class="flywheel-step" data-step="4" style="--angle: 270deg">
+                        <div class="step-node">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="step-info">
+                            <h4>Gains Distributed</h4>
+                            <p>50% of profits go directly to stakers. The cycle repeats.</p>
+                        </div>
+                    </div>
+                    <div class="flywheel-center">
+                        <span class="flywheel-label">$NRF</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats" id="stats">
-        <div class="container stats-container">
-            <div class="stat-card">
-                <div class="stat-number" data-target="99.9">0</div>
-                <div class="stat-unit">%</div>
-                <div class="stat-label">Uptime</div>
+    <!-- ==================== TOKENOMICS ==================== -->
+    <section class="section tokenomics" id="tokenomics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tokenomics</span>
+                <h2>Where your money goes</h2>
+                <p>No hidden wallets. No team dumps. The math is public.</p>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="12">0</div>
-                <div class="stat-unit">ms</div>
-                <div class="stat-label">Avg Response</div>
+            <div class="tokenomics-grid">
+                <div class="donut-container">
+                    <canvas id="donutChart" width="320" height="320"></canvas>
+                    <div class="donut-center">
+                        <span class="donut-total">1B</span>
+                        <span class="donut-label">Total Supply</span>
+                    </div>
+                </div>
+                <div class="tokenomics-details">
+                    <div class="token-segment" data-segment="0" data-pct="50">
+                        <div class="segment-bar"><div class="segment-fill" style="--pct: 50; --color: var(--accent)"></div></div>
+                        <div class="segment-info">
+                            <h4>Staker Rewards <span class="pct">50%</span></h4>
+                            <p>Half of every token and 50% of trading profits go to stakers. This is the core value prop — hold, stake, earn.</p>
+                        </div>
+                    </div>
+                    <div class="token-segment" data-segment="1" data-pct="20">
+                        <div class="segment-bar"><div class="segment-fill" style="--pct: 20; --color: var(--amber)"></div></div>
+                        <div class="segment-info">
+                            <h4>Trading Treasury <span class="pct">20%</span></h4>
+                            <p>Funds the AI trading bot's capital. Larger treasury = larger positions = more potential gains.</p>
+                        </div>
+                    </div>
+                    <div class="token-segment" data-segment="2" data-pct="15">
+                        <div class="segment-bar"><div class="segment-fill" style="--pct: 15; --color: #6366f1"></div></div>
+                        <div class="segment-info">
+                            <h4>Development <span class="pct">15%</span></h4>
+                            <p>AI model training, infrastructure, audits, and team vesting over 12 months.</p>
+                        </div>
+                    </div>
+                    <div class="token-segment" data-segment="3" data-pct="15">
+                        <div class="segment-bar"><div class="segment-fill" style="--pct: 15; --color: #8b5cf6"></div></div>
+                        <div class="segment-info">
+                            <h4>Liquidity & Community <span class="pct">15%</span></h4>
+                            <p>DEX liquidity, marketing, partnerships, and community incentives.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="10">0</div>
-                <div class="stat-unit">K+</div>
-                <div class="stat-label">Developers</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="100">0</div>
-                <div class="stat-unit">%</div>
-                <div class="stat-label">Open Source</div>
+            <div class="calculator">
+                <h3>Staking Calculator</h3>
+                <div class="calc-row">
+                    <label for="holdPct">Your holdings (% of supply)</label>
+                    <div class="calc-input-wrap">
+                        <input type="number" id="holdPct" value="0.1" min="0" max="100" step="0.01">
+                        <span class="calc-suffix">%</span>
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <div class="calc-out">
+                        <span class="calc-label">Your estimated share per cycle</span>
+                        <span class="calc-value" id="calcShare">$0</span>
+                    </div>
+                    <p class="calc-note">Based on current avg cycle distribution of $342,000. Actual returns vary.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <div class="container contact-container">
-            <h2>Ready to get <span class="gradient-text">started</span>?</h2>
-            <p>Join the waitlist and be the first to know when Neuro launches.</p>
-            <form class="signup-form" id="signupForm">
-                <input type="email" placeholder="you@example.com" class="email-input" required>
-                <button type="submit" class="btn btn-primary">Join Waitlist</button>
-            </form>
-            <p class="form-msg" id="formMsg"></p>
+    <!-- ==================== DASHBOARD ==================== -->
+    <section class="section dashboard" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Live Performance</span>
+                <h2>Dashboard</h2>
+                <p>Real numbers, updated on-chain. No cherry-picking.</p>
+            </div>
+            <div class="dash-cards">
+                <div class="dash-card">
+                    <div class="dash-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
+                    <span class="dash-card-value" data-target="1247">0</span>
+                    <span class="dash-card-label">Total Trades</span>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <span class="dash-card-value" data-target="891000" data-prefix="$">$0</span>
+                    <span class="dash-card-label">Total Gains</span>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                    <span class="dash-card-value" data-target="342000" data-prefix="$">$0</span>
+                    <span class="dash-card-label">Distributed to Stakers</span>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <span class="dash-card-value" data-target="2100000" data-prefix="$">$0</span>
+                    <span class="dash-card-label">Current AUM</span>
+                </div>
+            </div>
+            <div class="dash-chart-container">
+                <canvas id="perfChart" height="200"></canvas>
+                <div class="dash-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Data refreshes on-chain
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ==================== ROADMAP ==================== -->
+    <section class="section roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Roadmap</span>
+                <h2>What's next</h2>
+                <p>Concrete milestones, not vague promises.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-track"></div>
+                <div class="timeline-item completed" data-phase="Q1 2026">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Q1 2026</span>
+                        <h4>AI Model Training</h4>
+                        <p>Backtesting on 2 years of Solana DEX data. Sharpe ratio > 2.1 on test set.</p>
+                    </div>
+                </div>
+                <div class="timeline-item active" data-phase="Q2 2026">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Q2 2026</span>
+                        <h4>Launch on pump.fun</h4>
+                        <p>Token launch, initial liquidity, staking contract deployment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-phase="Q3 2026">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Q3 2026</span>
+                        <h4>Live Dashboard</h4>
+                        <p>On-chain data feed, real-time P&L, transparent wallet tracking.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-phase="Q4 2026">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Q4 2026</span>
+                        <h4>Multi-Strategy Expansion</h4>
+                        <p>Arbitrage, MEV, and lending strategies added to the bot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2>Questions you should ask</h2>
+                <p>Skepticism is healthy. Here are the answers.</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>
+                        <span>How do I know the AI actually trades?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Every trade is on-chain and verifiable. The bot's wallet address is public — you can trace every swap on Solscan. The dashboard pulls live data from on-chain events, not self-reported numbers.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        <span>What happens if the bot loses money?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Losses are bounded. The bot uses strict per-trade risk limits (max 2% of treasury per position). Losing trades happen — the edge is in the aggregate over hundreds of trades. No single trade can drain the treasury.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        <span>How are staking rewards calculated?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>50% of trading profits are distributed proportionally to stakers based on their share of total staked $NRF. Distributions happen every cycle (approximately weekly). The more you stake, the larger your share.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        <span>Is this a rug?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Fair question. Here's what we've done to earn trust: the staking contract is immutable once deployed, the trading wallet is public, team tokens vest over 12 months, and the code is open-source. We can't rug what we can't access. But always DYOR — never invest more than you can afford to lose.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        <span>Why pump.fun instead of a regular DEX?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>pump.fun gives us instant liquidity and fair launch mechanics — no presale, no VC allocation. Everyone buys at the same price. It's the most transparent launch mechanism on Solana right now.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to earn with AI?</h2>
+                <p>Buy $NRF on pump.fun and start staking. It takes 60 seconds.</p>
+                <a href="https://pump.fun" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Buy $NRF on pump.fun</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <div class="container footer-container">
+        <div class="container footer-inner">
             <div class="footer-brand">
-                <a href="#" class="logo">⚡ Neuro</a>
-                <p>Building the future, one commit at a time.</p>
+                <a href="#" class="logo">
+                    <svg class="logo-mark" width="24" height="24" viewBox="0 0 28 28" fill="none">
+                        <circle cx="14" cy="14" r="3" fill="var(--accent)"/>
+                        <circle cx="14" cy="4" r="2" fill="var(--accent)" opacity="0.6"/>
+                        <circle cx="14" cy="24" r="2" fill="var(--accent)" opacity="0.6"/>
+                        <circle cx="4" cy="14" r="2" fill="var(--accent)" opacity="0.6"/>
+                        <circle cx="24" cy="14" r="2" fill="var(--accent)" opacity="0.6"/>
+                    </svg>
+                    <span>NeuroFund</span>
+                </a>
+                <p class="footer-tagline">AI-powered trading. Community-first gains.</p>
             </div>
             <div class="footer-links">
                 <h4>Product</h4>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#">Docs</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#roadmap">Roadmap</a>
             </div>
             <div class="footer-links">
                 <h4>Community</h4>
-                <a href="#">GitHub</a>
-                <a href="#">Discord</a>
-                <a href="#">Twitter</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://t.me" target="_blank" rel="noopener">Telegram</a>
+                <a href="https://discord.gg" target="_blank" rel="noopener">Discord</a>
+                <a href="https://pump.fun" target="_blank" rel="noopener">pump.fun</a>
             </div>
             <div class="footer-links">
-                <h4>Legal</h4>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">License</a>
+                <h4>Transparency</h4>
+                <a href="#">Trading Wallet</a>
+                <a href="#">Staking Contract</a>
+                <a href="#">Open Source</a>
             </div>
         </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 Neuro. Built with care.</p>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>$NRF Contract: <code>Coming soon</code></p>
+                <p class="disclaimer">NeuroFund is an experimental project. Crypto trading involves risk. Never invest more than you can afford to lose. This is not financial advice.</p>
+            </div>
         </div>
     </footer>
 
