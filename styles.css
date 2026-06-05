@@ -168,7 +168,7 @@ ul{list-style:none}
 
 /* Top: centered horizontally, above ring */
 .wheel-step[data-pos="top"]{
-  top:20px;left:50%;
+  top:8px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
@@ -177,14 +177,14 @@ ul{list-style:none}
 
 /* Right: centered vertically, to the right */
 .wheel-step[data-pos="right"]{
-  top:52%;right:0;
+  top:50%;right:-10px;
   transform:translateY(-50%);
 }
 .wheel-step[data-pos="right"].show{transform:translateY(-50%)}
 
 /* Bottom: centered horizontally, below ring */
 .wheel-step[data-pos="bottom"]{
-  bottom:20px;left:50%;
+  bottom:8px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
@@ -192,7 +192,7 @@ ul{list-style:none}
 
 /* Left: centered vertically, to the left */
 .wheel-step[data-pos="left"]{
-  top:52%;left:0;
+  top:50%;left:-10px;
   transform:translateY(-50%);
   flex-direction:row-reverse;
   text-align:right;
