@@ -89,49 +89,53 @@
             <h2>How NeuroFund Works</h2>
             <p>Not a feature list. A cycle that compounds.</p>
         </header>
-        <div class="flywheel-grid">
-            <div class="flywheel-left">
-                <div class="wheel-step">
-                    <div class="step-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                    </div>
-                    <div class="step-text">
-                        <h4>AI Researches</h4>
-                        <p>Scans on-chain data, social signals, and market microstructure 24/7.</p>
-                    </div>
+        <div class="wheel-wrap">
+            <svg class="wheel-svg" viewBox="0 0 480 480" aria-hidden="true">
+                <circle cx="240" cy="240" r="160" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="5 7"/>
+                <circle cx="240" cy="240" r="160" fill="none" stroke="var(--teal)" stroke-width="2" stroke-dasharray="1005" stroke-dashoffset="1005" class="wheel-arc"/>
+                <!-- arrows -->
+                <path d="M240 80 L265 115" stroke="var(--teal)" stroke-width="1.2" opacity=".35" fill="none" marker-end="url(#arrow)"/>
+                <path d="M400 240 L365 265" stroke="var(--teal)" stroke-width="1.2" opacity=".35" fill="none" marker-end="url(#arrow)"/>
+                <path d="M240 400 L215 365" stroke="var(--teal)" stroke-width="1.2" opacity=".35" fill="none" marker-end="url(#arrow)"/>
+                <path d="M80 240 L115 215" stroke="var(--teal)" stroke-width="1.2" opacity=".35" fill="none" marker-end="url(#arrow)"/>
+                <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--teal)" opacity=".4"/></marker></defs>
+            </svg>
+            <div class="wheel-step" data-pos="top">
+                <div class="step-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
                 </div>
-                <div class="wheel-step">
-                    <div class="step-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                    </div>
-                    <div class="step-text">
-                        <h4>Bot Trades</h4>
-                        <p>Executes high-conviction trades on Solana DEXes with managed risk.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="flywheel-right">
-                <div class="wheel-step">
-                    <div class="step-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
-                    <div class="step-text">
-                        <h4>Gains Generated</h4>
-                        <p>Profits accumulate in the treasury. Losses are bounded per-trade.</p>
-                    </div>
-                </div>
-                <div class="wheel-step">
-                    <div class="step-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <div class="step-text">
-                        <h4>Gains Distributed</h4>
-                        <p>50% net gains to stakers, 35% compounds treasury, 10% buyback, 5% dev. Every cycle.</p>
-                    </div>
+                <div class="step-text">
+                    <h4>AI Researches</h4>
+                    <p>Scans on-chain data, social signals, and market microstructure 24/7.</p>
                 </div>
             </div>
-        </div>
-        <div class="wheel-center-wrap">
+            <div class="wheel-step" data-pos="right">
+                <div class="step-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <div class="step-text">
+                    <h4>Bot Trades</h4>
+                    <p>Executes high-conviction trades on Solana DEXes with managed risk.</p>
+                </div>
+            </div>
+            <div class="wheel-step" data-pos="bottom">
+                <div class="step-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="step-text">
+                    <h4>Gains Generated</h4>
+                    <p>Profits accumulate in the treasury. Losses are bounded per-trade.</p>
+                </div>
+            </div>
+            <div class="wheel-step" data-pos="left">
+                <div class="step-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="step-text">
+                    <h4>Gains Distributed</h4>
+                    <p>50% net gains to stakers, 35% compounds treasury, 10% buyback, 5% dev. Every cycle.</p>
+                </div>
+            </div>
             <div class="wheel-center">
                 <span>$NRF</span>
             </div>
