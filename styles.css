@@ -122,7 +122,7 @@ ul{list-style:none}
    ============================================ */
 .wheel-wrap{
   position:relative;
-  width:660px;height:660px;
+  width:660px;height:720px;
   margin:0 auto;
 }
 .wheel-svg{
