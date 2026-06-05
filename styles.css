@@ -321,13 +321,26 @@ ul{list-style:none}
   .hero h1{font-size:2.2rem}
   .trust-row{flex-direction:column;gap:16px}
   .trust-div{display:none}
-  .wheel-wrap{width:100%;max-width:400px;height:auto;aspect-ratio:1}
-  .wheel-step{position:static;width:100%;transform:none!important;margin-bottom:20px}
-  .wheel-step.show{transform:none}
+
+  /* Flywheel — vertical stack */
+  .wheel-wrap{width:100%;max-width:none;height:auto;padding:0}
   .wheel-svg,.wheel-center{display:none}
-  .tok-grid{grid-template-columns:1fr}
+  .wheel-step{
+    position:static!important;width:100%!important;transform:none!important;
+    display:flex;gap:14px;align-items:flex-start;
+    margin-bottom:0;padding:20px 0;
+    border-left:2px solid var(--border);padding-left:20px;
+  }
+  .wheel-step.show{transform:none}
+
+  /* Tokenomics */
+  .tok-grid{grid-template-columns:1fr;gap:28px}
   .tok-chart-wrap{margin:0 auto}
+
+  /* Dashboard */
   .dash-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Footer */
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 
@@ -335,7 +348,51 @@ ul{list-style:none}
   .hero h1{font-size:1.9rem}
   .hero-btns{flex-direction:column}
   .hero-btns .btn{width:100%}
-  .dash-grid{grid-template-columns:1fr 1fr}
+
+  /* Flywheel — vertical stack with connecting line */
+  .wheel-wrap{width:100%;max-width:none;height:auto;padding:0}
+  .wheel-svg,.wheel-center{display:none}
+  .wheel-step{
+    position:static!important;width:100%!important;transform:none!important;
+    display:flex;gap:12px;align-items:flex-start;
+    margin-bottom:0;padding:20px 0;
+    border-left:2px solid var(--border);padding-left:20px;
+  }
+  .wheel-step.show{transform:none}
+  .step-icon{width:40px;height:40px;flex-shrink:0}
+  .step-text h4{font-size:.88rem}
+  .step-text p{font-size:.78rem}
+
+  /* Tokenomics — stack chart above, segs below */
+  .tok-grid{grid-template-columns:1fr;gap:28px}
+  .tok-chart-wrap{margin:0 auto;width:240px;height:240px}
+  #tokCanvas{width:240px;height:240px}
+  .tok-segs{display:flex;flex-direction:column;gap:10px}
+  .tok-seg{padding:12px}
+
+  /* Dashboard — 2x2 grid */
+  .dash-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .dash-card{padding:16px 12px}
+  .dash-val{font-size:1.1rem}
+
+  /* Calculator */
   .calc-row{flex-direction:column;align-items:flex-start;gap:8px}
-  .foot-grid{grid-template-columns:1fr}
+  .calc-box{padding:20px}
+
+  /* Timeline */
+  .timeline{padding-left:28px}
+  .tl-dot{left:-23px;width:10px;height:10px}
+  .tl-body h4{font-size:.9rem}
+
+  /* FAQ */
+  .faq summary{padding:14px;font-size:.85rem}
+  .faq-a{padding:0 14px 14px;font-size:.8rem}
+
+  /* CTA */
+  .cta-box{padding:32px 20px}
+  .cta-box h2{font-size:1.4rem}
+
+  /* Footer — single column */
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+  .foot-col{text-align:left}
 }

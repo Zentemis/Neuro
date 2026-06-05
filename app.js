@@ -79,7 +79,7 @@
     var c=document.getElementById('tokCanvas');
     if(!c)return;
     var ctx=c.getContext('2d'),cx=150,cy=150,oR=130,iR=85;
-    var segs=[{p:50,c:'#00D4AA'},{p:20,c:'#F5A623'},{p:15,c:'#6366f1'},{p:15,c:'#8b5cf6'}];
+    var segs=[{p:50,c:'#00D4AA'},{p:35,c:'#F5A623'},{p:10,c:'#6366f1'},{p:5,c:'#8b5cf6'}];
     var dur=1400,t0=performance.now();
     function drawIt(now){
       var p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);
