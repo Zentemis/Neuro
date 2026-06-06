@@ -85,20 +85,56 @@
     c.style.width=size+'px';c.style.height=size+'px';
     var ctx=c.getContext('2d');
     ctx.scale(dpr,dpr);
-    var cx=size/2,cy=size/2,oR=size*0.43,iR=size*0.28;
-    var segs=[{p:50,c:'#00D4AA'},{p:35,c:'#F5A623'},{p:10,c:'#6366f1'},{p:5,c:'#8b5cf6'}];
-    var dur=1400,t0=performance.now();
+    var cx=size/2,cy=size/2,oR=size*0.44,iR=size*0.30;
+    var segs=[
+      {p:50,c1:'#00D4AA',c2:'#00eabb'},
+      {p:35,c1:'#F5A623',c2:'#f7c96b'},
+      {p:10,c1:'#6366f1',c2:'#818cf8'},
+      {p:5, c1:'#8b5cf6',c2:'#a78bfa'}
+    ];
+    var dur=1600,t0=performance.now();
+    var gap=0.035;
     function drawIt(now){
       var p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);
       ctx.clearRect(0,0,size,size);
-      var ang=-Math.PI/2;var gap=.03;
+
+      // Soft outer glow
+      ctx.save();
+      ctx.shadowColor='rgba(0,212,170,0.15)';
+      ctx.shadowBlur=size*0.08;
+      ctx.beginPath();ctx.arc(cx,cy,oR+2,0,Math.PI*2);ctx.strokeStyle='rgba(0,212,170,0.06)';ctx.lineWidth=4;ctx.stroke();
+      ctx.restore();
+
+      var ang=-Math.PI/2;
       for(var s=0;s<segs.length;s++){
         var sw=(segs[s].p/100)*Math.PI*2*ease;
-        ctx.beginPath();ctx.arc(cx,cy,oR,ang+gap/2,ang+sw-gap/2);
-        ctx.arc(cx,cy,iR,ang+sw-gap/2,ang+gap/2,true);ctx.closePath();
-        ctx.fillStyle=segs[s].c;ctx.fill();
+        if(sw-gap<0.01){ang+=(segs[s].p/100)*Math.PI*2;continue;}
+
+        // Gradient for each segment
+        var gAng=ang+sw/2;
+        var gx1=cx+Math.cos(gAng)*iR, gy1=cy+Math.sin(gAng)*iR;
+        var gx2=cx+Math.cos(gAng)*oR, gy2=cy+Math.sin(gAng)*oR;
+        var grad=ctx.createLinearGradient(gx1,gy1,gx2,gy2);
+        grad.addColorStop(0,segs[s].c1);grad.addColorStop(1,segs[s].c2);
+
+        ctx.beginPath();
+        ctx.arc(cx,cy,oR,ang+gap/2,ang+sw-gap/2);
+        ctx.arc(cx,cy,iR,ang+sw-gap/2,ang+gap/2,true);
+        ctx.closePath();
+        ctx.fillStyle=grad;ctx.fill();
+
+        // Subtle inner edge highlight
+        ctx.beginPath();
+        ctx.arc(cx,cy,iR+1,ang+gap/2,ang+sw-gap/2);
+        ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;ctx.stroke();
+
         ang+=(segs[s].p/100)*Math.PI*2;
       }
+
+      // Inner ring for polish
+      ctx.beginPath();ctx.arc(cx,cy,iR-1,0,Math.PI*2);
+      ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1.5;ctx.stroke();
+
       if(p<1)requestAnimationFrame(drawIt);
     }
     requestAnimationFrame(drawIt);

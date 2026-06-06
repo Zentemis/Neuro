@@ -206,8 +206,8 @@ ul{list-style:none}
 .tok-grid{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start;margin-bottom:48px}
 .tok-chart-wrap{position:relative;width:100%;max-width:300px;aspect-ratio:1/1}
 .tok-chart-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.tok-chart-center strong{display:block;font-family:var(--mono);font-size:1.5rem}
-.tok-chart-center span{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.07em}
+.tok-chart-center strong{display:block;font-family:var(--mono);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,var(--teal),#818cf8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tok-chart-center span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;display:block}
 .tok-segs{display:flex;flex-direction:column;gap:16px}
 .tok-seg{
   padding:14px 16px;border-radius:var(--r);
