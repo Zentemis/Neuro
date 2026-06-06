@@ -311,13 +311,22 @@ ul{list-style:none}
 .chart-box{
   position:relative;background:var(--bg-card);border:1px solid var(--border);
   border-radius:var(--r-lg);padding:20px;overflow:hidden;
+  box-shadow:var(--shadow-sm);
 }
 .chart-box canvas{display:block;width:100%}
+.chart-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .chart-badge{
   display:inline-flex;align-items:center;gap:5px;
-  font-family:var(--mono);font-size:.68rem;color:var(--teal);
-  background:var(--teal-dim);padding:3px 9px;border-radius:4px;margin-top:10px;
+  font-family:var(--mono);font-size:.68rem;color:var(--primary);
+  background:var(--primary-dim);padding:3px 9px;border-radius:var(--r-sm);
 }
+.chart-verify{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);
+  padding:3px 9px;border-radius:var(--r-sm);border:1px solid var(--border);
+  transition:var(--ease)
+}
+.chart-verify:hover{color:var(--primary);border-color:var(--primary-dim);background:var(--primary-dim)}
 
 /* ============================================
    ROADMAP
@@ -408,13 +417,15 @@ ul{list-style:none}
    ============================================ */
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none}
-  .nav-burger{display:flex}
+  .nav-burger{display:flex;z-index:1001}
+  .nav-burger.open span{background:#fff}
   .nav-links.open{
-    display:flex;flex-direction:column;
-    position:absolute;top:100%;left:0;right:0;
-    background:var(--bg);border-bottom:1px solid var(--border);
-    padding:16px 24px;gap:14px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(11,20,38,.97);backdrop-filter:blur(20px);
+    padding:var(--sp-7);gap:var(--sp-6);
   }
+  .nav-links.open a{font-size:1.3rem;font-weight:600;color:var(--text);padding:var(--sp-3) 0;min-height:48px;display:flex;align-items:center}
   .hero-grid{grid-template-columns:1fr;text-align:center}
   .hero-copy{max-width:none}
   .hero h1{font-size:2.2rem}
