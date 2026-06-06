@@ -12,11 +12,7 @@
     document.querySelectorAll('.tok-seg, .wheel-step, .tl-item').forEach(function(el){
       el.classList.add('show');
     });
-    document.querySelectorAll('.tok-bar-fill').forEach(function(el){
-      var w=el.getAttribute('data-width');
-      el.style.setProperty('--w',w);
-      el.classList.add('animated');
-    });
+    animateTokBars();
   }, 2000);
 
   try {
@@ -83,10 +79,13 @@
   function animateTokBars(){
     var fills=document.querySelectorAll('.tok-bar-fill');
     fills.forEach(function(el){
-      var w=el.getAttribute('data-width');
-      el.style.setProperty('--w',w);
-      el.classList.add('animated');
+      el.style.width='0%';
     });
+    setTimeout(function(){
+      fills.forEach(function(el){
+        el.style.width='';
+      });
+    },50);
   }
 
   /* ---- Performance Chart ---- */
@@ -147,7 +146,6 @@
         if(!e.isIntersecting)return;
         e.target.classList.add('show');
         try{e.target.querySelectorAll('[data-target]').forEach(function(el){if(!el.dataset.done){el.dataset.done='1';countUp(el)}})}catch(x){}
-        try{e.target.querySelectorAll('.tok-bar-fill').forEach(function(s,i){setTimeout(function(){var w=s.getAttribute('data-width');s.style.setProperty('--w',w);s.classList.add('animated')},i*150)})}catch(x){}
         try{e.target.querySelectorAll('.wheel-step').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*180)})}catch(x){}
         try{e.target.querySelectorAll('.tl-item').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*160)})}catch(x){}
         try{if(e.target.querySelector('.tok-bar-fill'))animateTokBars()}catch(x){}
@@ -209,11 +207,7 @@
     console.error('NeuroFund JS error:', err);
     document.querySelectorAll('.section').forEach(function(s){s.classList.add('show')});
     document.querySelectorAll('.tok-seg, .wheel-step, .tl-item').forEach(function(el){el.classList.add('show')});
-    document.querySelectorAll('.tok-bar-fill').forEach(function(el){
-      var w=el.getAttribute('data-width');
-      el.style.setProperty('--w',w);
-      el.classList.add('animated');
-    });
+    animateTokBars();
   }
 
   console.log('NeuroFund loaded.');
