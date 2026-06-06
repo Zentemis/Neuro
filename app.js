@@ -284,6 +284,19 @@
     });
   });
 
+  /* ---- Nav active section highlight ---- */
+  var navAnchors=document.querySelectorAll('.nav-links a[href^="#"]');
+  var sectionIds=[];
+  navAnchors.forEach(function(a){var id=a.getAttribute('href').slice(1);if(document.getElementById(id))sectionIds.push(id)});
+  var activeObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        navAnchors.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)});
+      }
+    });
+  },{threshold:0.3,rootMargin:'-80px 0px -60% 0px'});
+  sectionIds.forEach(function(id){var el=document.getElementById(id);if(el)activeObs.observe(el)});
+
   /* ---- Mark sections for reveal ---- */
   document.querySelectorAll('.section').forEach(function(s){if(!s.hasAttribute('data-reveal'))s.setAttribute('data-reveal','')});
 
