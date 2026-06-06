@@ -12,7 +12,6 @@
     document.querySelectorAll('.tok-seg, .wheel-step, .tl-item').forEach(function(el){
       el.classList.add('show');
     });
-    animateTokBars();
   }, 2000);
 
   try {
@@ -75,17 +74,34 @@
     requestAnimationFrame(tick);
   }
 
-  /* ---- Tokenomics Bars ---- */
-  function animateTokBars(){
-    var fills=document.querySelectorAll('.tok-bar-fill');
-    fills.forEach(function(el){
-      el.style.width='0%';
-    });
-    setTimeout(function(){
-      fills.forEach(function(el){
-        el.style.width='';
-      });
-    },50);
+  /* ---- Donut Chart ---- */
+  function drawDonut(){
+    var c=document.getElementById('tokCanvas');
+    if(!c)return;
+    var wrap=c.parentElement;
+    var size=Math.min(wrap.offsetWidth,300);
+    var dpr=window.devicePixelRatio||1;
+    c.width=size*dpr;c.height=size*dpr;
+    c.style.width=size+'px';c.style.height=size+'px';
+    var ctx=c.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var cx=size/2,cy=size/2,oR=size*0.43,iR=size*0.28;
+    var segs=[{p:50,c:'#00D4AA'},{p:35,c:'#F5A623'},{p:10,c:'#6366f1'},{p:5,c:'#8b5cf6'}];
+    var dur=1400,t0=performance.now();
+    function drawIt(now){
+      var p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);
+      ctx.clearRect(0,0,size,size);
+      var ang=-Math.PI/2;var gap=.03;
+      for(var s=0;s<segs.length;s++){
+        var sw=(segs[s].p/100)*Math.PI*2*ease;
+        ctx.beginPath();ctx.arc(cx,cy,oR,ang+gap/2,ang+sw-gap/2);
+        ctx.arc(cx,cy,iR,ang+sw-gap/2,ang+gap/2,true);ctx.closePath();
+        ctx.fillStyle=segs[s].c;ctx.fill();
+        ang+=(segs[s].p/100)*Math.PI*2;
+      }
+      if(p<1)requestAnimationFrame(drawIt);
+    }
+    requestAnimationFrame(drawIt);
   }
 
   /* ---- Performance Chart ---- */
@@ -146,9 +162,10 @@
         if(!e.isIntersecting)return;
         e.target.classList.add('show');
         try{e.target.querySelectorAll('[data-target]').forEach(function(el){if(!el.dataset.done){el.dataset.done='1';countUp(el)}})}catch(x){}
+        try{e.target.querySelectorAll('.tok-seg').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*120)})}catch(x){}
         try{e.target.querySelectorAll('.wheel-step').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*180)})}catch(x){}
         try{e.target.querySelectorAll('.tl-item').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*160)})}catch(x){}
-        try{if(e.target.querySelector('.tok-bar-fill'))animateTokBars()}catch(x){}
+        try{if(e.target.querySelector('#tokCanvas'))drawDonut()}catch(x){}
         try{if(e.target.querySelector('#perfCanvas'))drawPerf()}catch(x){}
         obs.unobserve(e.target);
       });
@@ -207,7 +224,6 @@
     console.error('NeuroFund JS error:', err);
     document.querySelectorAll('.section').forEach(function(s){s.classList.add('show')});
     document.querySelectorAll('.tok-seg, .wheel-step, .tl-item').forEach(function(el){el.classList.add('show')});
-    animateTokBars();
   }
 
   console.log('NeuroFund loaded.');
