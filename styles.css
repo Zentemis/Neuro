@@ -168,7 +168,7 @@ ul{list-style:none}
 
 /* Top: centered horizontally, above ring */
 .wheel-step[data-pos="top"]{
-  top:-50px;left:50%;
+  top:42px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
@@ -184,7 +184,7 @@ ul{list-style:none}
 
 /* Bottom: centered horizontally, below ring */
 .wheel-step[data-pos="bottom"]{
-  bottom:-70px;left:50%;
+  bottom:42px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
