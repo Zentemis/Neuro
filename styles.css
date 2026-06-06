@@ -169,7 +169,7 @@ ul{list-style:none}
 
 /* Top: centered horizontally, above ring */
 .wheel-step[data-pos="top"]{
-  top:42px;left:50%;
+  top:62px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
@@ -178,14 +178,14 @@ ul{list-style:none}
 
 /* Right: centered vertically, to the right */
 .wheel-step[data-pos="right"]{
-  top:50%;right:-80px;
+  top:50%;right:-55px;
   transform:translateY(-50%);
 }
 .wheel-step[data-pos="right"].show{transform:translateY(-50%)}
 
 /* Bottom: centered horizontally, below ring */
 .wheel-step[data-pos="bottom"]{
-  bottom:42px;left:50%;
+  bottom:62px;left:50%;
   transform:translateX(-50%);
   flex-direction:column;align-items:center;text-align:center;
 }
@@ -193,7 +193,7 @@ ul{list-style:none}
 
 /* Left: centered vertically, to the left */
 .wheel-step[data-pos="left"]{
-  top:50%;left:-80px;
+  top:50%;left:-55px;
   transform:translateY(-50%);
   flex-direction:row-reverse;
   text-align:right;
