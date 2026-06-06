@@ -141,54 +141,85 @@
   }
 
   /* ---- Performance Chart ---- */
+  var perfDrawn=false;
   function drawPerf(){
     var c=document.getElementById('perfCanvas');
-    if(!c)return;
-    var ctx=c.getContext('2d');
-    var w=c.offsetWidth||600;
-    c.width=w*2;c.height=360;ctx.scale(2,2);
-    var h=180,pad={t:16,r:16,b:28,l:52};
-    var data=[0,12,28,35,52,48,67,89,95,118,142,155,178,210,245,278,310,342,389,425,468,510,567,612,678,721,780,834,891];
-    var labels=['Jan','','','Apr','','','Jul','','','Oct','','','Jan','','','Apr','','','Jul','','','Oct','','','Jan','','','Apr',''];
+    if(!c||perfDrawn)return;
+    perfDrawn=true;
+    var wrap=c.parentElement;
+    var w=wrap.offsetWidth-40;
+    if(w<200)return;
+    var dpr=window.devicePixelRatio||1;
+    var h=Math.min(200,w*0.4);
+    c.width=w*dpr;c.height=h*dpr;
+    c.style.width=w+'px';c.style.height=h+'px';
+    var ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+    var pad={t:12,r:12,b:24,l:w<400?36:48};
+    var data=[0,28,52,89,118,178,245,342,468,612,780,891];
+    var labels=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=0;
     for(var i=0;i<data.length;i++)if(data[i]>mx)mx=data[i];
     mx*=1.1;
+    var fs=Math.max(9,Math.min(11,w/60));
+    ctx.font=fs+'px monospace';
 
-    ctx.strokeStyle='rgba(26,39,68,.7)';ctx.lineWidth=.5;
+    // Grid
+    ctx.strokeStyle='rgba(26,39,68,.6)';ctx.lineWidth=.5;
     for(var g=0;g<=4;g++){
       var gy=pad.t+ch/4*g;
       ctx.beginPath();ctx.moveTo(pad.l,gy);ctx.lineTo(w-pad.r,gy);ctx.stroke();
-      ctx.fillStyle='#4a5d7a';ctx.font='10px monospace';ctx.textAlign='right';
-      ctx.fillText('$'+Math.round((mx-mx/4*g)/1000)+'k',pad.l-6,gy+4);
+      ctx.fillStyle='#4a5d7a';ctx.textAlign='right';
+      ctx.fillText('$'+Math.round((mx-mx/4*g)/1000)+'k',pad.l-6,gy+fs/3);
     }
     ctx.textAlign='center';
-    for(var li=0;li<data.length;li++){if(labels[li]){ctx.fillText(labels[li],pad.l+cw/(data.length-1)*li,h-4)}}
+    for(var li=0;li<data.length;li++){
+      var lx=pad.l+cw/(data.length-1)*li;
+      ctx.fillStyle='#4a5d7a';ctx.fillText(labels[li],lx,h-4);
+    }
 
-    var dur=1800,t0=performance.now();
+    // Animate
+    var dur=1600,t0=performance.now();
     function anim(now){
       var p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);
-      var cnt=Math.floor(data.length*ease);
+      var cnt=Math.max(2,Math.floor(data.length*ease));
       ctx.clearRect(pad.l-1,pad.t-1,cw+2,ch+2);
-      ctx.strokeStyle='rgba(26,39,68,.7)';ctx.lineWidth=.5;
+
+      // Redraw grid
+      ctx.strokeStyle='rgba(26,39,68,.6)';ctx.lineWidth=.5;
       for(var rg=0;rg<=4;rg++){
         var rgy=pad.t+ch/4*rg;
         ctx.beginPath();ctx.moveTo(pad.l,rgy);ctx.lineTo(w-pad.r,rgy);ctx.stroke();
       }
-      if(cnt<2){if(p<1)requestAnimationFrame(anim);return}
+
+      // Area fill
       ctx.beginPath();
       for(var ai=0;ai<cnt;ai++){var ax=pad.l+cw/(data.length-1)*ai,ay=pad.t+ch-data[ai]/mx*ch;ai===0?ctx.moveTo(ax,ay):ctx.lineTo(ax,ay)}
       ctx.lineTo(pad.l+cw/(data.length-1)*(cnt-1),pad.t+ch);ctx.lineTo(pad.l,pad.t+ch);ctx.closePath();
       var gr=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
-      gr.addColorStop(0,'rgba(0,212,170,.13)');gr.addColorStop(1,'rgba(0,212,170,0)');
+      gr.addColorStop(0,'rgba(0,212,170,.12)');gr.addColorStop(1,'rgba(0,212,170,0)');
       ctx.fillStyle=gr;ctx.fill();
+
+      // Line
       ctx.beginPath();
-      for(var li2=0;li2<cnt;li2++){var lx=pad.l+cw/(data.length-1)*li2,ly=pad.t+ch-data[li2]/mx*ch;li2===0?ctx.moveTo(lx,ly):ctx.lineTo(lx,ly)}
-      ctx.strokeStyle='#00D4AA';ctx.lineWidth=1.8;ctx.stroke();
+      for(var li2=0;li2<cnt;li2++){var lx2=pad.l+cw/(data.length-1)*li2,ly2=pad.t+ch-data[li2]/mx*ch;li2===0?ctx.moveTo(lx2,ly2):ctx.lineTo(lx2,ly2)}
+      ctx.strokeStyle='#00D4AA';ctx.lineWidth=2;ctx.stroke();
+
+      // End dot
       var ex=pad.l+cw/(data.length-1)*(cnt-1),ey=pad.t+ch-data[cnt-1]/mx*ch;
-      ctx.beginPath();ctx.arc(ex,ey,3,0,Math.PI*2);ctx.fillStyle='#00D4AA';ctx.fill();
+      ctx.beginPath();ctx.arc(ex,ey,4,0,Math.PI*2);ctx.fillStyle='#00D4AA';ctx.fill();
+      ctx.beginPath();ctx.arc(ex,ey,7,0,Math.PI*2);ctx.strokeStyle='rgba(0,212,170,.3)';ctx.lineWidth=1.5;ctx.stroke();
+
       if(p<1)requestAnimationFrame(anim);
     }
     requestAnimationFrame(anim);
+  }
+
+  // Redraw chart on resize
+  if('ResizeObserver' in window){
+    var chartBox=document.querySelector('.chart-box');
+    if(chartBox){
+      new ResizeObserver(function(){perfDrawn=false;drawPerf()}).observe(chartBox);
+    }
   }
 
   /* ---- Scroll Reveals ---- */
