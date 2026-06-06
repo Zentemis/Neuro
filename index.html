@@ -47,18 +47,82 @@
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-grid">
         <div class="hero-copy">
             <h1>AI trades.<br>You earn.</h1>
             <p class="hero-sub">NeuroFund runs an autonomous trading bot on Solana. Profits are distributed to $NRF stakers — transparently, on-chain, every cycle.</p>
             <div class="hero-btns">
-                <a href="https://pump.fun" class="btn btn-accent btn-lg" target="_blank" rel="noopener">
+                <a href="https://pump.fun" class="btn btn-accent btn-lg" target="blank" rel="noopener">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     Buy $NRF on pump.fun
                 </a>
                 <a href="#flywheel" class="btn btn-outline btn-lg">How it works</a>
             </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <svg class="hero-flow-svg" viewBox="0 0 520 320" fill="none">
+                <!-- Connections (animated draw) -->
+                <line class="flow-line" x1="80" y1="160" x2="170" y2="160" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 4" opacity=".5"/>
+                <line class="flow-line" x1="230" y1="160" x2="320" y2="160" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 4" opacity=".5"/>
+                <line class="flow-line" x1="380" y1="160" x2="440" y2="100" stroke="var(--secondary)" stroke-width="2" stroke-dasharray="6 4" opacity=".5"/>
+                <line class="flow-line" x1="380" y1="160" x2="440" y2="220" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".5"/>
+
+                <!-- Node: Data -->
+                <g class="flow-node">
+                    <circle cx="50" cy="160" r="28" fill="var(--bg-card)" stroke="var(--primary)" stroke-width="1.5"/>
+                    <path d="M40 155 L50 148 L60 155 L60 172 L40 172Z" stroke="var(--primary)" stroke-width="1.5" fill="none"/>
+                    <line x1="45" y1="162" x2="55" y2="162" stroke="var(--primary)" stroke-width="1" opacity=".6"/>
+                    <line x1="45" y1="166" x2="55" y2="166" stroke="var(--primary)" stroke-width="1" opacity=".6"/>
+                    <text x="50" y="205" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--mono)">Data</text>
+                </g>
+
+                <!-- Node: AI Engine -->
+                <g class="flow-node">
+                    <circle cx="200" cy="160" r="32" fill="var(--bg-card)" stroke="var(--primary)" stroke-width="2"/>
+                    <circle cx="200" cy="160" r="12" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+                    <circle cx="200" cy="160" r="4" fill="var(--primary)"/>
+                    <line x1="200" y1="148" x2="200" y2="140" stroke="var(--primary)" stroke-width="1" opacity=".5"/>
+                    <line x1="200" y1="172" x2="200" y2="180" stroke="var(--primary)" stroke-width="1" opacity=".5"/>
+                    <line x1="188" y1="160" x2="180" y2="160" stroke="var(--primary)" stroke-width="1" opacity=".5"/>
+                    <line x1="212" y1="160" x2="220" y2="160" stroke="var(--primary)" stroke-width="1" opacity=".5"/>
+                    <text x="200" y="208" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--mono)">AI Engine</text>
+                </g>
+
+                <!-- Node: Trade -->
+                <g class="flow-node">
+                    <circle cx="350" cy="160" r="28" fill="var(--bg-card)" stroke="var(--primary)" stroke-width="1.5"/>
+                    <polyline points="340,168 345,158 350,165 355,152 360,162" stroke="var(--primary)" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                    <text x="350" y="205" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--mono)">Trade</text>
+                </g>
+
+                <!-- Node: Stakers -->
+                <g class="flow-node">
+                    <circle cx="470" cy="100" r="24" fill="var(--bg-card)" stroke="var(--secondary)" stroke-width="1.5"/>
+                    <circle cx="470" cy="96" r="6" stroke="var(--secondary)" stroke-width="1.2" fill="none"/>
+                    <path d="M462 108 Q470 102 478 108" stroke="var(--secondary)" stroke-width="1.2" fill="none"/>
+                    <text x="470" y="138" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--mono)">Stakers</text>
+                </g>
+
+                <!-- Node: Reinvest -->
+                <g class="flow-node">
+                    <circle cx="470" cy="220" r="24" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+                    <path d="M462 216 L470 210 L478 216" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                    <path d="M462 224 L470 230 L478 224" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                    <line x1="470" y1="210" x2="470" y2="230" stroke="var(--accent)" stroke-width="1" opacity=".4"/>
+                    <text x="470" y="258" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--mono)">Reinvest</text>
+                </g>
+
+                <!-- Animated pulse on connections -->
+                <circle class="flow-pulse" r="3" fill="var(--primary)">
+                    <animateMotion dur="3s" repeatCount="indefinite" path="M50,160 L200,160 L350,160"/>
+                </circle>
+                <circle class="flow-pulse" r="3" fill="var(--secondary)">
+                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M350,160 L470,100"/>
+                </circle>
+                <circle class="flow-pulse" r="3" fill="var(--accent)">
+                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M350,160 L470,220"/>
+                </circle>
+            </svg>
         </div>
     </div>
     <div class="trust-bar">

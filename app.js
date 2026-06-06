@@ -16,42 +16,6 @@
 
   try {
 
-  /* ---- Neural Network Canvas ---- */
-  var cvs=document.getElementById('heroCanvas');
-  if(cvs){
-    var ctx=cvs.getContext('2d');
-    var nodes=[],mx=0,my=0;
-    function resize(){cvs.width=cvs.offsetWidth;cvs.height=cvs.offsetHeight}
-    function makeNodes(){
-      nodes=[];
-      var n=Math.floor(cvs.width*cvs.height/16000);
-      if(n>80)n=80;
-      for(var i=0;i<n;i++) nodes.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.7});
-    }
-    function draw(){
-      ctx.clearRect(0,0,cvs.width,cvs.height);
-      for(var i=0;i<nodes.length;i++){
-        var a=nodes[i];
-        var dx=mx-a.x,dy=my-a.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<180){var f=(180-d)/180*.007;a.vx+=dx*f;a.vy+=dy*f}
-        a.x+=a.vx;a.y+=a.vy;a.vx*=.99;a.vy*=.99;
-        if(a.x<0)a.x=cvs.width;if(a.x>cvs.width)a.x=0;
-        if(a.y<0)a.y=cvs.height;if(a.y>cvs.height)a.y=0;
-        for(var j=i+1;j<nodes.length;j++){
-          var b=nodes[j],ddx=a.x-b.x,ddy=a.y-b.y,dd=Math.sqrt(ddx*ddx+ddy*ddy);
-          if(dd<110){
-            ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-            ctx.strokeStyle='rgba(0,212,170,'+((1-dd/110)*.12)+')';ctx.lineWidth=.5;ctx.stroke();
-          }
-        }
-        ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(0,212,170,.45)';ctx.fill();
-      }
-      requestAnimationFrame(draw);
-    }
-    resize();makeNodes();draw();
-    window.addEventListener('resize',function(){resize();makeNodes()});
-    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
-  }
 
   /* ---- Counter Animation ---- */
   function countUp(el){
