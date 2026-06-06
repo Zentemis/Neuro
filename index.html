@@ -152,41 +152,71 @@
             <p>No hidden wallets. No team dumps. The math is public.</p>
         </header>
         <div class="tok-grid">
-            <div class="tok-chart-wrap">
-                <canvas id="tokCanvas" width="300" height="300"></canvas>
-                <div class="tok-chart-center">
-                    <strong>1B</strong>
-                    <span>Total Supply</span>
+            <div class="tok-legend">
+                <div class="tok-legend-item">
+                    <span class="tok-legend-color" style="background:#00D4AA"></span>
+                    <span class="tok-legend-label">Staker Rewards</span>
+                    <span class="tok-legend-pct">50%</span>
+                </div>
+                <div class="tok-legend-item">
+                    <span class="tok-legend-color" style="background:#F5A623"></span>
+                    <span class="tok-legend-label">Trading Treasury</span>
+                    <span class="tok-legend-pct">35%</span>
+                </div>
+                <div class="tok-legend-item">
+                    <span class="tok-legend-color" style="background:#6366f1"></span>
+                    <span class="tok-legend-label">Token Buyback</span>
+                    <span class="tok-legend-pct">10%</span>
+                </div>
+                <div class="tok-legend-item">
+                    <span class="tok-legend-color" style="background:#8b5cf6"></span>
+                    <span class="tok-legend-label">Development</span>
+                    <span class="tok-legend-pct">5%</span>
+                </div>
+                <div class="tok-legend-supply">
+                    <span>1B</span> Total Supply
                 </div>
             </div>
-            <div class="tok-segs">
-                <div class="tok-seg" data-color="#00D4AA" style="--pct:50">
-                    <div class="tok-bar"><div class="tok-fill" style="background:#00D4AA"></div></div>
-                    <div class="tok-info">
-                        <h4>Staker Rewards <span class="tok-pct">50%</span></h4>
-                        <p>50% of net gains (after API costs) distributed to stakers proportionally based on their share of staked $NRF. Stake more, earn more.</p>
+            <div class="tok-bars-wrap">
+                <div class="tok-bar-row">
+                    <div class="tok-bar-label">
+                        <span class="tok-bar-dot" style="background:#00D4AA"></span>
+                        <span>Staker Rewards <strong>50%</strong></span>
                     </div>
+                    <div class="tok-bar-track">
+                        <div class="tok-bar-fill" data-width="50" style="background:linear-gradient(90deg,#00D4AA,#00eabb)"></div>
+                    </div>
+                    <p class="tok-bar-desc">50% of net gains (after API costs) distributed to stakers proportionally based on their share of staked $NRF. Stake more, earn more.</p>
                 </div>
-                <div class="tok-seg" data-color="#F5A623" style="--pct:35">
-                    <div class="tok-bar"><div class="tok-fill" style="background:#F5A623"></div></div>
-                    <div class="tok-info">
-                        <h4>Trading Treasury <span class="tok-pct">35%</span></h4>
-                        <p>Funds the AI bot's trading capital. Larger treasury = larger positions = more potential gains for everyone.</p>
+                <div class="tok-bar-row">
+                    <div class="tok-bar-label">
+                        <span class="tok-bar-dot" style="background:#F5A623"></span>
+                        <span>Trading Treasury <strong>35%</strong></span>
                     </div>
+                    <div class="tok-bar-track">
+                        <div class="tok-bar-fill" data-width="35" style="background:linear-gradient(90deg,#F5A623,#f7b94d)"></div>
+                    </div>
+                    <p class="tok-bar-desc">Funds the AI bot's trading capital. Larger treasury = larger positions = more potential gains for everyone.</p>
                 </div>
-                <div class="tok-seg" data-color="#6366f1" style="--pct:10">
-                    <div class="tok-bar"><div class="tok-fill" style="background:#6366f1"></div></div>
-                    <div class="tok-info">
-                        <h4>Token Buyback <span class="tok-pct">10%</span></h4>
-                        <p>10% of net gains from each trading cycle used to buy back $NRF from the open market. Reduces circulating supply and supports price floor.</p>
+                <div class="tok-bar-row">
+                    <div class="tok-bar-label">
+                        <span class="tok-bar-dot" style="background:#6366f1"></span>
+                        <span>Token Buyback <strong>10%</strong></span>
                     </div>
+                    <div class="tok-bar-track">
+                        <div class="tok-bar-fill" data-width="10" style="background:linear-gradient(90deg,#6366f1,#818cf8)"></div>
+                    </div>
+                    <p class="tok-bar-desc">10% of net gains from each trading cycle used to buy back $NRF from the open market. Reduces circulating supply and supports price floor.</p>
                 </div>
-                <div class="tok-seg" data-color="#8b5cf6" style="--pct:5">
-                    <div class="tok-bar"><div class="tok-fill" style="background:#8b5cf6"></div></div>
-                    <div class="tok-info">
-                        <h4>Development <span class="tok-pct">5%</span></h4>
-                        <p>AI model training, infrastructure, audits, and ongoing operations.</p>
+                <div class="tok-bar-row">
+                    <div class="tok-bar-label">
+                        <span class="tok-bar-dot" style="background:#8b5cf6"></span>
+                        <span>Development <strong>5%</strong></span>
                     </div>
+                    <div class="tok-bar-track">
+                        <div class="tok-bar-fill" data-width="5" style="background:linear-gradient(90deg,#8b5cf6,#a78bfa)"></div>
+                    </div>
+                    <p class="tok-bar-desc">AI model training, infrastructure, audits, and ongoing operations.</p>
                 </div>
             </div>
         </div>

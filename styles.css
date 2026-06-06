@@ -203,24 +203,27 @@ ul{list-style:none}
 /* ============================================
    TOKENOMICS
    ============================================ */
-.tok-grid{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start;margin-bottom:48px}
-.tok-chart-wrap{position:relative;width:300px;height:300px}
-.tok-chart-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.tok-chart-center strong{display:block;font-family:var(--mono);font-size:1.5rem}
-.tok-chart-center span{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.07em}
-.tok-segs{display:flex;flex-direction:column;gap:16px}
-.tok-seg{
-  padding:14px 16px;border-radius:var(--r);
-  background:var(--bg-card);border:1px solid var(--border);
-  transition:var(--ease);cursor:default;
-}
-.tok-seg:hover{border-color:var(--border-lt);background:var(--bg-card-h)}
-.tok-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:10px;overflow:hidden}
-.tok-fill{height:100%;width:0;border-radius:2px;transition:width 1.2s ease}
-.tok-seg.show .tok-fill{width:calc(var(--pct) * 1%)}
-.tok-info h4{font-size:.9rem;display:flex;align-items:center;gap:8px;margin-bottom:3px}
-.tok-pct{font-family:var(--mono);font-size:.78rem;color:var(--teal)}
-.tok-info p{font-size:.82rem;color:var(--muted);line-height:1.5}
+/* ---- Legend (left side) ---- */
+.tok-grid{display:grid;grid-template-columns:240px 1fr;gap:44px;align-items:start;margin-bottom:48px}
+.tok-legend{display:flex;flex-direction:column;gap:14px}
+.tok-legend-item{display:flex;align-items:center;gap:10px}
+.tok-legend-color{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+.tok-legend-label{font-size:.88rem;color:var(--text);flex:1}
+.tok-legend-pct{font-family:var(--mono);font-size:.88rem;font-weight:700;color:var(--teal)}
+.tok-legend-supply{margin-top:8px;padding-top:14px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}
+.tok-legend-supply span{font-family:var(--mono);font-weight:700;font-size:1.3rem;color:var(--teal);display:block;margin-bottom:2px}
+
+/* ---- Bar rows (right side) ---- */
+.tok-bars-wrap{display:flex;flex-direction:column;gap:24px}
+.tok-bar-row{}
+.tok-bar-label{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tok-bar-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.tok-bar-label span{font-size:.88rem;color:var(--muted)}
+.tok-bar-label strong{color:var(--text);font-weight:700}
+.tok-bar-track{height:10px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.tok-bar-fill{height:100%;width:0;border-radius:5px;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.tok-bar-fill.animated{width:calc(var(--w) * 1%)}
+.tok-bar-desc{font-size:.82rem;color:var(--muted);line-height:1.55;margin-top:8px}
 .calc-box{
   background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);
   padding:28px 32px;max-width:480px;margin:0 auto;
@@ -364,7 +367,6 @@ ul{list-style:none}
 
   /* Tokenomics */
   .tok-grid{grid-template-columns:1fr;gap:28px}
-  .tok-chart-wrap{margin:0 auto}
 
   /* Dashboard */
   .dash-grid{grid-template-columns:repeat(2,1fr)}
@@ -393,9 +395,7 @@ ul{list-style:none}
 
   /* Tokenomics */
   .tok-grid{grid-template-columns:1fr;gap:24px}
-  .tok-chart-wrap{margin:0 auto;width:240px;height:240px}
-  .tok-segs{gap:10px}
-  .tok-seg{padding:12px}
+  .tok-bar-track{height:8px}
 
   /* Dashboard */
   .dash-grid{grid-template-columns:1fr 1fr;gap:10px}
