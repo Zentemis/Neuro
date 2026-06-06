@@ -122,14 +122,15 @@ ul{list-style:none}
    ============================================ */
 .wheel-wrap{
   position:relative;
-  width:700px;height:780px;
+  width:100%;max-width:760px;
+  aspect-ratio:1/1.12;
   margin:0 auto;
 }
 .wheel-svg{
   position:absolute;
   top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:380px;height:380px;
+  width:52%;aspect-ratio:1/1;
   pointer-events:none;
 }
 .wheel-arc{transition:stroke-dashoffset 2.5s ease}
@@ -138,7 +139,7 @@ ul{list-style:none}
 .wheel-center{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:88px;height:88px;border-radius:50%;
+  width:clamp(72px,12%,100px);aspect-ratio:1/1;border-radius:50%;
   background:var(--bg-card);border:3px solid var(--teal);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-weight:700;font-size:1.1rem;color:var(--teal);
@@ -149,7 +150,7 @@ ul{list-style:none}
 /* Steps: fixed width, centered at cardinal points */
 .wheel-step{
   position:absolute;
-  width:190px;
+  width:clamp(160px,26%,220px);
   display:flex;gap:10px;align-items:flex-start;
   opacity:0;transform:translateY(10px);
   transition:opacity .5s ease,transform .5s ease;
@@ -177,7 +178,7 @@ ul{list-style:none}
 
 /* Right: centered vertically, to the right */
 .wheel-step[data-pos="right"]{
-  top:50%;right:-120px;
+  top:50%;right:-80px;
   transform:translateY(-50%);
 }
 .wheel-step[data-pos="right"].show{transform:translateY(-50%)}
@@ -192,7 +193,7 @@ ul{list-style:none}
 
 /* Left: centered vertically, to the left */
 .wheel-step[data-pos="left"]{
-  top:50%;left:-120px;
+  top:50%;left:-80px;
   transform:translateY(-50%);
   flex-direction:row-reverse;
   text-align:right;
@@ -354,12 +355,12 @@ ul{list-style:none}
   .trust-div{display:none}
 
   /* Flywheel — keep circle but smaller */
-  .wheel-wrap{width:360px;height:360px}
-  .wheel-step{width:140px}
+  .wheel-wrap{max-width:400px}
+  .wheel-step{width:clamp(120px,26%,160px)}
   .step-icon{width:36px;height:36px}
   .step-text h4{font-size:.8rem}
   .step-text p{font-size:.7rem}
-  .wheel-center{width:56px;height:56px;font-size:.8rem}
+  .wheel-center{font-size:.8rem}
 
   /* Tokenomics */
   .tok-grid{grid-template-columns:1fr;gap:28px}
