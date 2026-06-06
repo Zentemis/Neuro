@@ -193,14 +193,15 @@
 
   /* ---- Scroll Reveals ---- */
   if('IntersectionObserver' in window){
+    var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(!e.isIntersecting)return;
         e.target.classList.add('show');
         try{e.target.querySelectorAll('[data-target]').forEach(function(el){if(!el.dataset.done){el.dataset.done='1';countUp(el)}})}catch(x){}
-        try{e.target.querySelectorAll('.tok-seg').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*120)})}catch(x){}
-        try{e.target.querySelectorAll('.wheel-step').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*180)})}catch(x){}
-        try{e.target.querySelectorAll('.tl-item').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},i*160)})}catch(x){}
+        try{e.target.querySelectorAll('.tok-seg').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},reducedMotion?0:i*120)})}catch(x){}
+        try{e.target.querySelectorAll('.wheel-step').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},reducedMotion?0:i*180)})}catch(x){}
+        try{e.target.querySelectorAll('.tl-item').forEach(function(s,i){setTimeout(function(){s.classList.add('show')},reducedMotion?0:i*160)})}catch(x){}
         try{if(e.target.querySelector('#tokCanvas'))drawDonut()}catch(x){}
         try{if(e.target.querySelector('#perfCanvas'))drawPerf()}catch(x){}
         obs.unobserve(e.target);
